@@ -51,23 +51,9 @@ module App =
             { model with ThirdPage = l; Global = g },  (Cmd.map ThirdPageMsg c)       
         | NavigationPopped ->
             if model.Global.PoppedByBackButton 
-                then 
-                    { 
-                        model with 
-                            Global = // {model.Global with PageStash = Helpers.reshuffle model.Global.PageStash}
-                                { PageStash =  Helpers.reshuffle model.Global.PageStash
-                                  PoppedByBackButton = true
-                                } 
-                    }, 
-                        Cmd.none
-                else 
-                    { model with 
-                        Global = {model.Global with PoppedByBackButton = true}
-                            //{ PageStash =  [AppPages.names.FirstPage]
-                            //  PoppedByBackButton = true
-                            //} 
-                    }, 
-                        Cmd.none
+                then { model with Global = { PageStash =  Helpers.reshuffle model.Global.PageStash
+                                             PoppedByBackButton = true }}, Cmd.none
+                else { model with Global = {model.Global with PoppedByBackButton = true}}, Cmd.none
 
     let view (model: Model) =
         Application(

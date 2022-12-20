@@ -25,13 +25,8 @@ module ThirdPage =
     let update msg (model: Model) (globalModel: GlobalModel) =
         match msg with
         | OpenPage s -> model, { globalModel with PageStash = List.append globalModel.PageStash [s] }, Cmd.none
-        | Close -> 
-            model, 
-            { globalModel with 
-                PoppedByBackButton = false
-                PageStash = [AppPages.names.FirstPage] 
-            }, 
-                Cmd.none
+        | Close -> model, { globalModel with PoppedByBackButton = false
+                                             PageStash = [AppPages.names.FirstPage] }, Cmd.none
 
     let view (model: Model) (globalModel: GlobalModel)  =
         ContentPage (
