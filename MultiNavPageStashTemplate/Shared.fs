@@ -23,6 +23,7 @@ module AppPages =
         
 type GlobalModel = { 
     PageStash: List<AppPages.Name>
+    PoppedByBackButton: bool
     }
 
 module Helpers = 

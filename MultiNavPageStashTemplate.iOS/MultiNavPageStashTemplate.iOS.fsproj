@@ -13,6 +13,10 @@
     <AssemblyName>MultiNavPageStashTemplate.iOS</AssemblyName>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
+    <SelectedDevice>iPhone 14 Plus iOS 16.2</SelectedDevice>
+    <SelectedPlatformGroup>Simulator</SelectedPlatformGroup>
+    <ActiveDebugProfile>iPhone 14 Plus iOS 16.2</ActiveDebugProfile>
+    <DefaultDevice>iPhone 14 Plus iOS 16.2</DefaultDevice>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>

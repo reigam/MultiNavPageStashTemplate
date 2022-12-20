@@ -25,7 +25,8 @@ module App =
 
     let initModel = 
         { Global = { 
-            PageStash = [AppPages.names.FirstPage] }
+            PageStash = [AppPages.names.FirstPage] 
+            PoppedByBackButton = true }
           LayoutsPage = fst (LayoutsPage.init())
           FirstPage = fst (FirstPage.init())
           SecondPage = fst (SecondPage.init())
@@ -49,7 +50,24 @@ module App =
             let l, g, c = ThirdPage.update m model.ThirdPage model.Global
             { model with ThirdPage = l; Global = g },  (Cmd.map ThirdPageMsg c)       
         | NavigationPopped ->
-            { model with Global = { PageStash = Helpers.reshuffle model.Global.PageStash } }, Cmd.none
+            if model.Global.PoppedByBackButton 
+                then 
+                    { 
+                        model with 
+                            Global = // {model.Global with PageStash = Helpers.reshuffle model.Global.PageStash}
+                                { PageStash =  Helpers.reshuffle model.Global.PageStash
+                                  PoppedByBackButton = true
+                                } 
+                    }, 
+                        Cmd.none
+                else 
+                    { model with 
+                        Global = {model.Global with PoppedByBackButton = true}
+                            //{ PageStash =  [AppPages.names.FirstPage]
+                            //  PoppedByBackButton = true
+                            //} 
+                    }, 
+                        Cmd.none
 
     let view (model: Model) =
         Application(
